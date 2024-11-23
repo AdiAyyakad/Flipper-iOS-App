@@ -11,7 +11,7 @@ extension Provisioning.Region {
 
 extension ISOCode {
     init(_ data: Data) {
-        self.value = String(decoding: data, as: UTF8.self)
+        self.value = String(data: data, encoding: .utf8) ?? Self.default.value
     }
 }
 

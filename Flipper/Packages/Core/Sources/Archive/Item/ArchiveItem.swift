@@ -1,7 +1,7 @@
 import Peripheral
 import Foundation
 
-public struct ArchiveItem: Equatable, Identifiable, Hashable {
+public struct ArchiveItem: Equatable, Identifiable, Hashable, Sendable {
     public var id: ID {
         .init(path: path)
     }
@@ -16,7 +16,7 @@ public struct ArchiveItem: Equatable, Identifiable, Hashable {
     public var note: String
     public var date: Date
 
-    public enum Status: Equatable {
+    public enum Status: Equatable, Sendable {
         case error
         case deleted
         case imported
@@ -57,7 +57,8 @@ extension ArchiveItem {
     }
 
     init(filename: String, data: Data) throws {
-        let content = String(decoding: data, as: UTF8.self)
+        enum Err: Swift.Error { case utf8DecodingError }
+        let content = try String(data: data, encoding: .utf8).unwrapOrThrow(Err.utf8DecodingError)
         try self.init(filename: filename, content: content)
     }
 

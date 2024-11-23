@@ -1,7 +1,7 @@
 import Peripheral
 
 extension ArchiveItem {
-    public enum Kind: Codable, Hashable, Comparable, CaseIterable {
+    public enum Kind: Codable, Hashable, Comparable, CaseIterable, Sendable {
         case subghz
         case rfid
         case nfc

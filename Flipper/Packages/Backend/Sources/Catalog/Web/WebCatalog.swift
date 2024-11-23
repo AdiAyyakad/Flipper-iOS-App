@@ -61,7 +61,7 @@ public class WebCatalog: CatalogService {
         }
         guard statusCode == 200 else {
             logger.error("report issue: invalid status code - \(statusCode)")
-            logger.debug("response: \(String(decoding: data, as: UTF8.self))")
+            logger.debug("response: \(String(data: data, encoding: .utf8) ?? "nil")")
             return
         }
     }

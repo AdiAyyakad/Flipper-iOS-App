@@ -34,11 +34,7 @@ public extension InfraredLayout {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .sortedKeys // Save order
 
-        guard
-            let layout = try? encoder.encode(self)
-        else { return nil }
-
-        return String(decoding: layout, as: UTF8.self)
+        return (try? encoder.encode(self)).flatMap { String(data: $0, encoding: .utf8) }?
             .replacingOccurrences(of: "\n", with: "")
             .replacingOccurrences(of: "\t", with: "")
             .replacingOccurrences(of: "\r", with: "")

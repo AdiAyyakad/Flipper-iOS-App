@@ -1,3 +1,4 @@
+import Foundation
 import Peripheral
 
 class FlipperFavorites: FavoritesStorage {
@@ -12,7 +13,8 @@ class FlipperFavorites: FavoritesStorage {
     func read() async throws -> Favorites {
         do {
             let bytes = try await storage.read(at: path).drain()
-            let content = String(decoding: bytes, as: UTF8.self)
+            enum Err: Swift.Error { case utf8DecodingError }
+            let content = try String(data: Data(bytes), encoding: .utf8).unwrapOrThrow(Err.utf8DecodingError)
             return try .init(decoding: content)
         } catch let error as Peripheral.Error {
             if error == .storage(.doesNotExist) {
@@ -27,5 +29,15 @@ class FlipperFavorites: FavoritesStorage {
         let content = try favorites.encode()
         let bytes = [UInt8](content.utf8)
         try await storage.write(at: path, bytes: bytes).drain()
+    }
+}
+
+extension Optional {
+    func unwrapOrThrow<T: Swift.Error>(_ error: T) throws -> Wrapped {
+        if let value = self {
+            return value
+        } else {
+            throw error
+        }
     }
 }

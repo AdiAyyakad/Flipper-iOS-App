@@ -123,7 +123,12 @@ actor FlipperApps {
 
     private func remoteManifest(_ path: Path) async throws -> Manifest {
         let data = try await storage.read(at: path).drain()
-        try await cache.upsert(String(decoding: data, as: UTF8.self), at: path)
+        if let string = String(data: Data(data), encoding: .utf8) {
+            try await cache.upsert(string, at: path)
+        } else {
+            enum Err: Swift.Error, Hashable { case utf8DecodingError }
+            throw Err.utf8DecodingError
+        }
         let manifest = try FFFDecoder.decode(Manifest.self, from: data)
         return manifest
     }

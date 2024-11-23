@@ -27,7 +27,7 @@ class Tranfser {
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
             throw URLError(.badServerResponse)
         }
-        let responseContent = String(decoding: data, as: UTF8.self)
+        let responseContent = String(data: data, encoding: .utf8) ?? ""
         return code(from: responseContent)
     }
 

@@ -1,7 +1,7 @@
 import struct Peripheral.Path
 
 extension ArchiveItem {
-    public struct Name: Codable, Equatable, Hashable {
+    public struct Name: Codable, Equatable, Hashable, Sendable {
         public var value: String
 
         public init<T: StringProtocol>(_ value: T) {

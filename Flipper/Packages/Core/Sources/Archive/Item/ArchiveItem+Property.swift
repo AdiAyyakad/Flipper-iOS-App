@@ -1,5 +1,5 @@
 extension ArchiveItem {
-    public struct Property: Equatable, Hashable {
+    public struct Property: Equatable, Hashable, Sendable {
         public let key: String
         public var value: String
         public var description: [String] = []

@@ -156,8 +156,12 @@ extension Archive {
         }
         if let path = item.layoutPath {
             if let layout = item.layout {
-                let content = String(decoding: layout, as: UTF8.self)
-                try await mobileArchive.upsert(content, at: path)
+                if let content = String(data: layout, encoding: .utf8) {
+                    try await mobileArchive.upsert(content, at: path)
+                } else {
+                    enum Err: Swift.Error { case utf8DecodingError }
+                    throw Err.utf8DecodingError
+                }
             } else {
                 try await mobileArchive.delete(path)
             }
