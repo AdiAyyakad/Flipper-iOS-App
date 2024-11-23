@@ -10,6 +10,7 @@
 		0A228A9D29DE0D2F000D7D10 /* FlipperShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A228A9C29DE0D2F000D7D10 /* FlipperShortcuts.swift */; };
 		0AD5C05D29D9A04E00E0F97E /* ArchivedItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD5C05B29D9A04E00E0F97E /* ArchivedItemEntity.swift */; };
 		0AD5C05E29D9A04E00E0F97E /* SendArchivedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD5C05C29D9A04E00E0F97E /* SendArchivedItem.swift */; };
+		4000D4782CF1B8FC007FA4F9 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4000D4772CF1B8FC007FA4F9 /* ComposableArchitecture */; };
 		49CE8F9E25262E2300B9CBE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CE8F9D25262E2300B9CBE4 /* LaunchScreen.storyboard */; };
 		65CAD4C22BD6946000628789 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 65CAD4C12BD6946000628789 /* PrivacyInfo.xcprivacy */; };
 		65CAD4C42BD6946000628789 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 65CAD4C12BD6946000628789 /* PrivacyInfo.xcprivacy */; };
@@ -247,6 +248,7 @@
 			files = (
 				8B7064CC26E27429006CB4A8 /* UI in Frameworks */,
 				8BF8025C2B0C14670083DF49 /* Notifications in Frameworks */,
+				4000D4782CF1B8FC007FA4F9 /* ComposableArchitecture in Frameworks */,
 				8B77A9CD26CAA43300A3DF9F /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +550,7 @@
 				8B77A9CC26CAA43300A3DF9F /* Core */,
 				8B7064CB26E27429006CB4A8 /* UI */,
 				8BF8025B2B0C14670083DF49 /* Notifications */,
+				4000D4772CF1B8FC007FA4F9 /* ComposableArchitecture */,
 			);
 			productName = "Flipper (iOS)";
 			productReference = F0DBFA2124EF2F9900EB2880 /* Flipper.app */;
@@ -590,6 +593,7 @@
 			);
 			mainGroup = F0DBFA1424EF2F9600EB2880;
 			packageReferences = (
+				4000D4762CF1B8FC007FA4F9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = F0DBFA2224EF2F9900EB2880 /* Products */;
 			projectDirPath = "";
@@ -1313,7 +1317,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		4000D4762CF1B8FC007FA4F9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.16.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		4000D4772CF1B8FC007FA4F9 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4000D4762CF1B8FC007FA4F9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
 		8B7064CB26E27429006CB4A8 /* UI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UI;
