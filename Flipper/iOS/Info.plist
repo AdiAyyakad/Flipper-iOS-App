@@ -87,7 +87,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLName</key>
-			<string>com.flipperdevices.main</string>
+			<string>com.adiayyakad.flipperapp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>flipper</string>
